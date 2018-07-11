@@ -237,7 +237,8 @@ class Coefficient(object):
 					Z[i][j] = 0
 		d = 400 # background
 		A = __np__.zeros([d,d])
-		A[d/2-l1/2+1:d/2+l1/2+1,d/2-l1/2+1:d/2+l1/2+1] = Z
+		# A[d/2-l1/2+1:d/2+l1/2+1,d/2-l1/2+1:d/2+l1/2+1] = Z
+		A[int(d/2)-int(l1/2)+1:int(d/2)+int(l1/2)+1,int(d/2)-int(l1/2)+1:int(d/2)+int(l1/2)+1] = Z
 		axis_1 = d/pupil*r
 		fig = __plt__.figure()
 		# ax = fig.gca()
