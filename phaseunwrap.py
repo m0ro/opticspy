@@ -1,5 +1,6 @@
 import numpy as __np__
-from unwrap import unwrap as __unwrap__
+# from unwrap import unwrap as __unwrap__
+from skimage.restoration import unwrap_phase as __unwrap__
 
 v = lambda x: __np__.arctan2(__np__.sin(x), __np__.cos(x))
 wrap_diff = lambda x: v(__np__.diff(x))
@@ -115,9 +116,10 @@ def unwrap2D(wraped_phase,type="boundary",noise = True):
 		ph1 = wraped_phase[0]
 		M = wraped_phase[1]
 		s = wraped_phase[2]
-		ph = __unwrap__(ph1,wrap_around_axis_0=False,\
-							wrap_around_axis_1=False,\
-							wrap_around_axis_2=False)
+		# ph = __unwrap__(ph1,wrap_around_axis_0=False,\
+		# 					wrap_around_axis_1=False,\
+		# 					wrap_around_axis_2=False)
+		ph = __unwrap__(ph1, wrap_around=[False, False, False])
 		return ph
 
 	else:
