@@ -281,6 +281,27 @@ class Coefficient(object):
 		__plt__.show()
 		return 0
 
+	def psfmatrix(self,r=1,lambda_1=632*10**(-9),z=0.1):
+		"""
+		------------------------------------------------
+		psf()
+
+		Return the point spread function of a wavefront described by
+		Zernike Polynomials
+		------------------------------------------------
+		Input:
+
+		r: exit pupil radius(mm)
+
+		lambda_1: wavelength(m)
+
+		z: exit pupil to image plane distance(m)
+
+		"""
+		# print(r,lambda_1,z)
+		PSF = self.__psfcaculator__(r=r,lambda_1=lambda_1,z=z)
+		return abs(PSF)
+
 	def otf(self,r=1,lambda_1=632*10**(-9),z=0.1):
 		PSF = self.__psfcaculator__(r=r,lambda_1=lambda_1,z=z)
 		OTF = __fftshift__(__fft2__(PSF))
